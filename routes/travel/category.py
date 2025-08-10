@@ -40,10 +40,18 @@ async def travel_recommend(req: Icategory):
                 case "shopping":
                     category_list.append("쇼핑")
 
+# 파이썬에서 슈파베이스 라이브러리를 다운 받음. 다운을 받으면 supabase python sdk가 깔림 
+# sdk가 포스트 그레스트 api를 통해 전송 (sdk (소프트웨어 개발키트) 내부에서 돌아감)
+# 파이썬에서 spl 쿼리를 사용하면 설치한 sdk내부에서 포스트 그레스트api를 통해 sql쿼리를 전송
+# cs가 or문 또는 and문 느낌
+# 우리가 파이썬 배열로 작성하여 포스트 그레스트 api가 sql문을 변환할때 파이썬의 리스트를 spl문에 맞게 변환을 하지 못함
+# 그래서 포스트 그레스 sql 배열 문자열 형식으로 변환
 
+# 형식 변환
     stayle_array = "{" + ",".join(style_list) + "}"
     category_array = "{" + ",".join(category_list) + "}"
 
+#sql 쿼리를 사용
     response = (
         supabase.table("tour_list")
         .select("*")

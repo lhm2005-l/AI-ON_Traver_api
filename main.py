@@ -21,4 +21,3 @@ app.add_middleware(
 
 @app.get("/")
 def read_root():
-    return {"연결상태": "려유"}
